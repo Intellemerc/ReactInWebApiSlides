@@ -41,11 +41,13 @@ const images = {
   Modules: require("../assets/Modules.png"),
   CodeSplitting: require("../assets/CodeSplitting.jpg"),
   CodeSplitting2: require("../assets/CodeSplitting2.jpg"),
-  ChooseAdventure: require("../assets/ChooseAdventure.jpg")
+  NewWebApi: require("../assets/NewWebapi.png"),
+  FilesToMove: require("../assets/FilesToMove.png")
 };
 const examples = {
   ES6: require("raw!../examples/ES6.example"),
-  WebpackModule: require("raw!../examples/WebpackModule.example")
+  WebpackModule: require("raw!../examples/WebpackModule.example"),
+  createReact: require("raw!../examples/createReact.example")
 };
 
 preloader(images);
@@ -55,12 +57,14 @@ export default class Presentation extends React.Component {
     return (
       <Spectacle theme={theme}>
         <Deck transition={["zoom", "slide"]} transitionDuration={500}>
+
           <Slide transition={["slide"]} bgColor="primary">
             <Heading size={1} caps fit textColor="tertiary">
               Web Api with React,<br />Webpack and ES6
             </Heading>
             By James Armstrong
           </Slide>
+
           <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary" >
               Toolchain - NPM
@@ -72,12 +76,14 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Very large repository(350k vs 70k for Nuget)</ListItem></Appear>
             </List>
           </Slide>
+
           <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary">
               Toolchain - NPM
             </Heading>
             <Image src={images.Lego} width="75%"/>
           </Slide>
+
           <Slide transition={["fade"]}>
             <Heading size={1} caps fit >
               Toolchain - Webpack
@@ -87,6 +93,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.Webpack} width="75%"/>
           </Slide>
+
           <Slide transition={["fade"]} >
             <Heading size={1} caps fit >
               Toolchain - Webpack
@@ -97,6 +104,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.WebpackModules} width="75%" />
           </Slide>
+
           <Slide transition={["fade"]} >
             <Heading size={1} caps fit >
               Toolchain - Webpack
@@ -106,6 +114,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.Modules} width="75%" />
           </Slide>
+
           <CodeSlide
             bgColor="primary"
             transition={[]}
@@ -117,6 +126,7 @@ export default class Presentation extends React.Component {
                 { loc: [13, 18], note: "Output"}
             ]}
           />
+
           <Slide transition={["fade"]} >
             <Heading size={1} caps fit>
               Toolchain - Webpack
@@ -126,6 +136,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.WebpackModules} width="100%" />
           </Slide>
+
           <Slide transition={["fade"]} textColor="primary">
             <Heading size={1} caps fit >
               Toolchain - Webpack
@@ -135,6 +146,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.CodeSplitting} width="75%" />
           </Slide>
+
           <Slide transition={["fade"]} textColor="primary">
             <Heading size={1} caps fit >
               Toolchain - Webpack
@@ -155,7 +167,39 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Development and Prod Env.</ListItem></Appear>
             </List>
           </Slide>
+          <CodeSlide
+            bgColor="primary"
+            transition={[]}
+            lang="batch"
+            code={examples.createReact}
+            ranges={[
+                { loc: [0, 4], title: "Create-React-App", note: "Install Create App" },
+                { loc: [22, 28], title: "Create-React-App", note: "Run Create App" },
+                { loc: [29, 31], title: "Create-React-App", note: "Change to dir" },
+                { loc: [32, 34], title: "Create-React-App", note: "Start it" },
+                { loc: [37, 41], title: "Create-React-App", note: "Start it" }
+            ]}
+          />
 
+         <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary">
+              Integrate it with WebApi
+            </Heading>
+            <Heading size={2} caps fit textColor="primary">
+              New WebApi Project
+            </Heading>
+            <Image src={images.NewWebApi} width="75%" />
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary">
+              Integrate it with WebApi
+            </Heading>
+            <Heading size={2} caps fit textColor="primary">
+              Copy certain create react app files to webapi
+            </Heading>
+            <Image src={images.FilesToMove} width="40%" />
+          </Slide>
 
            <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary">
@@ -167,7 +211,7 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Development and Prod Env.</ListItem></Appear>
             </List>
           </Slide>
-         
+
           <CodeSlide
             bgColor="primary"
             transition={[]}
