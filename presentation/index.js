@@ -33,7 +33,17 @@ require("spectacle/lib/themes/default/index.css");
 
 
 const images = {
-  NodeVS: require("../assets/NodeInVS.png")
+  NodeVS: require("../assets/NodeInVS.png"),
+  NPM: require("../assets/npm.jpg"),
+  Lego: require("../assets/Lego.jpg"),
+  Webpack: require("../assets/Webpack.png"),
+  WebpackModules: require("../assets/WebpackModules.png"),
+  Modules: require("../assets/Modules.png")
+};
+const examples = {
+  stringInterpolation: require("raw!../examples/StringInterpolation.example"),
+  spreadOperator: require("raw!../examples/spreadOperator.example"),
+  WebpackModule: require("raw!../examples/WebpackModule.example")
 };
 
 preloader(images);
@@ -53,32 +63,57 @@ export default class Presentation extends React.Component {
             <Heading size={1} caps fit>
               Toolchain - NPM
             </Heading>
+            <Image src={images.NPM} width={300}/>
             <List textColor="secondary">
               <Appear><ListItem>Like Nuget for JS</ListItem></Appear>
-              <Appear><ListItem>Mindset is collection of Lego’s you can plug in play</ListItem></Appear>
-              <Appear><ListItem>Large repository of Lego’s(350k vs 70k for Nuget)</ListItem></Appear>  
+              <Appear><ListItem>Think of as Lego’s you can plug in play</ListItem></Appear>
+              <Appear><ListItem>Large repository of Lego’s(350k vs 70k for Nuget)</ListItem></Appear>
             </List>
-            <Image src={images.NPM} width={300}/>
           </Slide>
           <Slide transition={["fade"]} textColor="primary">
             <Heading size={1} caps fit >
-              Toolchain - Webpack
+              Toolchain - NPM
             </Heading>
-            <List textColor="secondary">
-              <Appear>
-                <ListItem>Asp.net Bundler on steroids</ListItem>
-              </Appear>
-              <Appear>
-                <ListItem>Module Loading</ListItem>
-              </Appear>
-              <Appear><ListItem>Deals with Assets not just JS(js, img, css, and binary)</ListItem></Appear>
-              <Appear><ListItem>Can split into chunks and lazy loaded(code splitting)</ListItem></Appear>
-            </List>
+            <Image src={images.Lego} width={800} />
+          </Slide>
+          <Slide transition={["fade"]} textColor="primary">
+            <Heading size={1} caps fit >
+              Toolchain - Webpack - Asp.net Bundler on steroids
+            </Heading>
+            <Image src={images.Webpack} width={500} />
+          </Slide>
+          <Slide transition={["fade"]} textColor="primary">
+            <Heading size={1} caps fit >
+              Toolchain - Webpack - Deals with Assets not just JS(js, img, css, and binary)
+            </Heading>
+            <Image src={images.WebpackModules} width={800} />
+          </Slide>
+          <Slide transition={["fade"]} textColor="primary">
+            <Heading size={1} caps fit >
+              Toolchain - Webpack - Module Loading
+            </Heading>
+            <Image src={images.Modules} width={800} />
+          </Slide>
+          <CodeSlide textColor="primary"
+            transition={[]}
+            lang="jsx"
+            code={examples.WebpackModule}
+            ranges={[
+                { loc: [0, 4], title: "Create the new component"},
+                { loc: [5, 12], title: "Use new component"},
+                { loc: [13, 18], title: "Output"}
+            ]}
+          />
+          <Slide transition={["fade"]} textColor="primary">
+            <Heading size={1} caps fit >
+              Toolchain - Webpack - Can split into chunks and lazy loaded(code splitting)
+            </Heading>
+            <Image src={images.WebpackModules} width={800} />
           </Slide>
           <CodeSlide textColor="primary"
             transition={[]}
             lang="js"
-            code={require("raw!../assets/StringInterpolation.example")}
+            code={examples.stringInterpolation}
             ranges={[
                 { loc: [0, 2], title: "String Interpolation"}
             ]}

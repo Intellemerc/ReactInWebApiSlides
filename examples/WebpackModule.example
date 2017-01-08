@@ -1,0 +1,18 @@
+//in component called MyModule.tsx
+export default () => {
+    return <div>Some Sample Text</div>;
+}
+
+//in file you want to use component
+import MyModule from './MyModule';
+...
+return <div>
+            Hello World!
+            <MyModule />
+        </div>
+
+//Output
+<div>
+    Hello World!
+    <div>Some Sample Text</div>
+</div>
