@@ -100,13 +100,13 @@ export default class Presentation extends React.Component {
             code={examples.WebpackModule}
             ranges={[
                 { loc: [0, 4], title: "Create the new component"},
-                { loc: [5, 12], title: "Use new component"},
+                { loc: [5, 12], title: "Use the new component"},
                 { loc: [13, 18], title: "Output"}
             ]}
           />
           <Slide transition={["fade"]} textColor="primary">
-            <Heading size={1} caps fit >
-              Toolchain - Webpack - Can split into chunks and lazy loaded(code splitting)
+            <Heading size={1} caps fit lineHeight={1.5}>
+              Toolchain - Webpack - Can split into chunks <br />and lazy loaded(code splitting)
             </Heading>
             <Image src={images.WebpackModules} width={800} />
           </Slide>
