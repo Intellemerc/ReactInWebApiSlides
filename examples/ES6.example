@@ -1,0 +1,29 @@
+//Let and Const
+let someVar = "blah";
+someVar = "blah blah";
+
+const someVar = "blah";
+//Error
+someVar = "blah blah";
+
+//Spread Operator
+let myVar = {
+    a: 'blah',
+    b: 'other string'
+}
+const myOtherVar = {
+    ...myVar,
+    b: 'some other string',
+    c: 3
+}
+/*
+    myOtherVar = {
+        a: 'blah',
+        b: 'some other string',
+        c: 3
+    }
+*/
+
+//String Interpolation
+const myVar = 'test';
+const myOtherVar = `Some test with a $(myVar)`;

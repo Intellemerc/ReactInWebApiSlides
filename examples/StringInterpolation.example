@@ -1,2 +1,0 @@
-const myVar = 'test';
-const myOtherVar = `Some test with a $(myVar)`;
