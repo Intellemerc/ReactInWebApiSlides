@@ -1,0 +1,58 @@
+npm install -g yo generator-aspnetcore-spa
+
+cd some-empty-directory
+yo aspnetcore-spa
+
+
+     _-----_     ╭──────────────────────────╮
+    |       |    │  Welcome to the ASP.NET  │
+    |--(o)--|    │   Core Single-Page App   │
+   `---------´   │        generator!        │
+    ( _´U`_ )    ╰──────────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+? Framework
+  Angular 2
+  Aurelia
+  Knockout
+> React
+  React with Redux
+
+...
+? Framework React
+? Your project name netCore
+
+
+I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command y
+ourself.
+
+
+   create package.json
+   create .babelrc
+   create appsettings.json
+   create ClientApp\boot.tsx
+   create ClientApp\components\Counter.tsx
+...
+
+log  : Restore completed in 20933ms.
+Hash: 2ce5e25b508c8877a5e7
+Version: webpack 1.14.0
+Time: 6140ms
+                               Asset    Size  Chunks             Chunk Names
+89889688147bd7575d6327160d64e760.svg  109 kB          [emitted]
+                           vendor.js  1.6 MB       0  [emitted]  vendor
+                          vendor.css  315 kB       0  [emitted]  vendor
+   [0] dll vendor 12 bytes {0} [built]
+    + 328 hidden modules
+Child extract-text-webpack-plugin:
+        + 7 hidden modules
+Hash: 39c563e85bac591de565
+Version: webpack 1.14.0
+Time: 6203ms
+      Asset     Size  Chunks             Chunk Names
+    main.js  45.4 kB       0  [emitted]  main
+main.js.map  30.3 kB       0  [emitted]  main
+    + 16 hidden modules

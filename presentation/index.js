@@ -42,12 +42,19 @@ const images = {
   CodeSplitting: require("../assets/CodeSplitting.jpg"),
   CodeSplitting2: require("../assets/CodeSplitting2.jpg"),
   NewWebApi: require("../assets/NewWebapi.png"),
-  FilesToMove: require("../assets/FilesToMove.png")
+  FilesToMove: require("../assets/FilesToMove.png"),
+  NPMTaskRunner: require("../assets/NPMTaskRunner.png"),
+  Choose: require("../assets/Choose.jpg")
 };
 const examples = {
   ES6: require("raw!../examples/ES6.example"),
   WebpackModule: require("raw!../examples/WebpackModule.example"),
-  createReact: require("raw!../examples/createReact.example")
+  createReact: require("raw!../examples/createReact.example"),
+  UrlRewrite: require("raw!../examples/UrlRewrite.example"),
+  WPP: require("raw!../examples/wpp.example"),
+  ImportToRequire: require("raw!../examples/ImportToRequire.example"),
+  NetCore: require("raw!../examples/NetCore.example"),
+  Slides: require("raw!../examples/deck.example")
 };
 
 preloader(images);
@@ -116,7 +123,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <CodeSlide
-            bgColor="primary"
             transition={[]}
             lang="jsx"
             code={examples.WebpackModule}
@@ -159,16 +165,42 @@ export default class Presentation extends React.Component {
 
           <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary">
-              Create-React-App
+              NPM Task Runner
             </Heading>
-            <List textColor="primary">
+            <Heading size={2} textColor="primary" style={{fontSize: 42}}>
+            Install: <Link textColor="primary" style={{textDecoration: "underline"}} href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner">NPM Task Runner</Link>
+            </Heading>
+            <Image src={images.NPMTaskRunner} width="100%" />
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="tertiary" >
+            <Heading size={1} caps fit textColor="primary">
+              Choose your own Adventure
+            </Heading>
+            <Layout>
+              <Fill>
+                <List textColor="primary">
+                  <ListItem><Link textColor="primary" style={{textDecoration: "underline"}} href="/#/12">Asp.Net WebApi</Link></ListItem>
+                  <ListItem><Link textColor="primary" style={{textDecoration: "underline"}} href="/#/20">.Net Core</Link></ListItem>
+                </List>
+              </Fill>
+              <Fill>
+                <Image src={images.Choose} width="100%" />
+              </Fill>
+            </Layout>
+          </Slide>
+
+          <Slide transition={["fade"]} >
+            <Heading size={1} caps fit >
+              1.Create-React-App
+            </Heading>
+            <List >
               <Appear><ListItem>Easy way to get a React app</ListItem></Appear>
               <Appear><ListItem>All tools already configured</ListItem></Appear>
               <Appear><ListItem>Development and Prod Env.</ListItem></Appear>
             </List>
           </Slide>
           <CodeSlide
-            bgColor="primary"
             transition={[]}
             lang="batch"
             code={examples.createReact}
@@ -183,25 +215,93 @@ export default class Presentation extends React.Component {
 
          <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary">
-              Integrate it with WebApi
+              2.Integrate it with WebApi
             </Heading>
-            <Heading size={2} caps fit textColor="primary">
+            <Heading size={2}textColor="primary" style={{fontSize: 34}}>
               New WebApi Project
             </Heading>
             <Image src={images.NewWebApi} width="75%" />
           </Slide>
 
-          <Slide transition={["fade"]} bgColor="secondary">
-            <Heading size={1} caps fit textColor="primary">
-              Integrate it with WebApi
+          <Slide transition={["fade"]}>
+            <Heading size={1} caps fit>
+              3.Integrate it with WebApi
             </Heading>
-            <Heading size={2} caps fit textColor="primary">
+            <Heading size={2} style={{fontSize: 34}}>
               Copy certain create react app files to webapi
             </Heading>
             <Image src={images.FilesToMove} width="40%" />
           </Slide>
 
-           <Slide transition={["fade"]} bgColor="secondary">
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary">
+              4.Integrate it with WebApi
+            </Heading>
+            <List textColor="primary">
+              <Appear><ListItem>Change js to tsx</ListItem></Appear>
+              <Appear><ListItem>Add tsconfig.json file</ListItem></Appear>
+              <Appear>
+                <ListItem>
+                  Install types for current items
+                  <List >
+                    <ListItem style={{fontSize: 20}}>
+                      &nbsp;&nbsp;npm install --save-dev @types/jest @types/react @types/react-dom @types/requirejs
+                    </ListItem>
+                  </List>
+                </ListItem>
+              </Appear>
+            </List>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="xml"
+            code={examples.UrlRewrite}
+            ranges={[
+                { loc: [2, 4], title: "5.URL Rewrite", note: "Match All Urls" },
+                { loc: [5, 6], title: "5.URL Rewrite", note: "And files exists in Build folder" },
+                { loc: [7, 8], title: "5.URL Rewrite", note: "Change url to Build path" },
+                { loc: [9, 11], title: "5.URL Rewrite", note: "Rewrite all react routes" },
+                { loc: [12, 15], title: "5.URL Rewrite", note: "Ignore conditions" },
+                { loc: [16, 17], title: "5.URL Rewrite", note: "Rewrite to React" },
+                { loc: [18, 20], title: "5.URL Rewrite", note: "Match root /" },
+                { loc: [20, 21], title: "5.URL Rewrite", note: "Rewrite to React" }
+
+            ]}
+          />
+
+          <CodeSlide
+            transition={[]}
+            lang="xml"
+            code={examples.WPP}
+            ranges={[
+                { loc: [2, 3], title: "6.Fix Publish Profile", note: "Name task" },
+                { loc: [4, 5], title: "6.Fix Publish Profile", note: "What files to include" },
+                { loc: [5, 8], title: "6.Fix Publish Profile", note: "Where to put files in dest" },
+                { loc: [11, 15], title: "6.Fix Publish Profile", note: "Change url to Build path" }
+            ]}
+          />
+
+          <CodeSlide
+            transition={[]}
+            lang="xml"
+            code={examples.ImportToRequire}
+            ranges={[
+                { loc: [0, 1], title: "7.Fix VS Errors", note: "Importing an image" },
+                { loc: [2, 3], title: "7.Fix VS Errors", note: "Change to Require" }
+            ]}
+          />
+
+         <Slide transition={["fade"]}>
+            <Heading size={1} caps fit>
+              Create-React-App
+            </Heading>
+            <Heading size={2} style={{fontSize: 54}}>
+              Demo
+            </Heading>
+          </Slide>
+
+           <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
             <Heading size={1} caps fit textColor="primary">
               There is an easier way!
             </Heading>
@@ -213,18 +313,36 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <CodeSlide
-            bgColor="primary"
             transition={[]}
-            lang="js"
-            code={examples.ES6}
+            lang="batch"
+            code={examples.NetCore}
             ranges={[
-                { loc: [0, 7], title: "ES2015(AKA ES6)", note: "Let and Const"},
-                { loc: [8, 13], title: "ES2015(AKA ES6)", note: "Spread Operator"},
-                { loc: [13, 18], title: "ES2015(AKA ES6)", note: "Spread Operator"},
-                { loc: [18, 25], title: "ES2015(AKA ES6)", note: "Spread Operator"},
-                { loc: [26, 29], title: "ES2015(AKA ES6)", note: "String Interpolation"}
+                { loc: [0, 1], title: "7.DotNet Core", note: "Install Yoman and generator" },
+                { loc: [2, 4], title: "7.DotNet Core", note: "Run Yoman" },
+                { loc: [16, 22], title: "7.DotNet Core", note: "Importing an image" },
+                { loc: [54, 58], title: "7.DotNet Core", note: "Importing an image" }
+
             ]}
           />
+          <CodeSlide
+            transition={[]}
+            lang="jsx"
+            code={examples.Slides}
+            ranges={[
+                { loc: [0, 1], title: "React Slides"},
+                { loc: [6, 8], title: "React Slides"},
+                { loc: [8, 14], title: "React Slides"}
+            ]}
+          />
+
+          <Slide transition={["fade"]}>
+            <Heading size={1} caps fit>
+              .Net Core
+            </Heading>
+            <Heading size={2} style={{fontSize: 54}}>
+              Demo
+            </Heading>
+          </Slide>
         </Deck>
       </Spectacle>
     );

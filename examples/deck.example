@@ -1,28 +1,38 @@
-return (
-  <Deck transition={['zoom','slide']} transitionDuration={800}>
-    <Slide bgColor="primary">
-      <Heading size={1} fit caps>
-        React Presentations
-      </Heading>
-      <Heading size={2} fit caps>
-        Written In React
-      </Heading>
-    </Slide>
-    <Slide bgColor="black">
-      <Heading size={1} fit textColor="primary" textFont="secondary">
-        Wait What?
-      </Heading>
-    </Slide>
-    <Slide bgColor="primary" textColor="black" align="center top">
-      <Heading size={1} textColor="black" textFont="primary">
-        Thats right
-      </Heading>
-      <List>
-        <ListItem>Inline style based theme system</ListItem>
-        <ListItem>Autofit Text</ListItem>
-        <ListItem>react-router navigation</ListItem>
-        <ListItem>PDF Export</ListItem>
-      </List>
-    </Slide>
-  </Deck>
-)
+export default class Presentation extends React.Component {
+  render() {
+    return (
+      <Spectacle theme={theme}>
+        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
+
+          <Slide transition={["slide"]} 
+                 bgColor="primary">
+            <Heading 
+                size={1} caps fit 
+                textColor="tertiary">
+              Web Api with React,<br />
+              Webpack and ES6
+            </Heading>
+            By James Armstrong
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary" >
+              Toolchain - NPM
+            </Heading>
+            <Image src={images.NPM} width={300}/>
+            <List textColor="primary">
+              <Appear><ListItem>Like Nuget for JS</ListItem></Appear>
+              <Appear><ListItem>Small single purpose tools</ListItem></Appear>
+              <Appear><ListItem>Very large repository(350k vs 70k for Nuget)</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary">
+              Toolchain - NPM
+            </Heading>
+            <Image src={images.Lego} width="75%"/>
+          </Slide>
+       </Deck>
+  </Spectacle>;
+}
