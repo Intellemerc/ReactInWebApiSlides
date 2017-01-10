@@ -1,18 +1,24 @@
-//in component called MyModule.tsx
+//MyModule.tsx
+export const ABC = 'abc';
+
 export default () => {
     return <div>Some Sample Text</div>;
 }
 
-//in file you want to use component
+//App.tsx
 import MyModule from './MyModule';
+import { ABC } from './MyModule';
+import MyModule, { ABC } from './MyModule';
 ...
 return  <div>
             Hello World!
             <MyModule />
+            { ABC }
         </div>
 
 //Output
 <div>
     Hello World!
     <div>Some Sample Text</div>
+    abc
 </div>

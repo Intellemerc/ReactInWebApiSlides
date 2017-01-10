@@ -44,7 +44,8 @@ const images = {
   NewWebApi: require("../assets/NewWebapi.png"),
   FilesToMove: require("../assets/FilesToMove.png"),
   NPMTaskRunner: require("../assets/NPMTaskRunner.png"),
-  Choose: require("../assets/Choose.jpg")
+  Choose: require("../assets/Choose.jpg"),
+  Pipe: require("../assets/pipe.png")
 };
 const examples = {
   ES6: require("raw!../examples/ES6.example"),
@@ -54,7 +55,8 @@ const examples = {
   WPP: require("raw!../examples/wpp.example"),
   ImportToRequire: require("raw!../examples/ImportToRequire.example"),
   NetCore: require("raw!../examples/NetCore.example"),
-  Slides: require("raw!../examples/deck.example")
+  Slides: require("raw!../examples/deck.example"),
+  CORS: require("raw!../examples/CORS.example")
 };
 
 preloader(images);
@@ -72,6 +74,37 @@ export default class Presentation extends React.Component {
             By James Armstrong
           </Slide>
 
+          <Slide transition={["fade"]}>
+            <Heading size={1} caps style={{fontSize: "2em"}}>
+              Quick Poll<br />
+              (React,ES6,and Typescript)
+            </Heading>
+            <List>
+              <Appear><ListItem>Never used</ListItem></Appear>
+              <Appear><ListItem>Tutorials</ListItem></Appear>
+              <Appear><ListItem>Trivial App</ListItem></Appear>
+              <Appear><ListItem>Used in prod</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary" >
+              Toolchain
+            </Heading>
+            <List textColor="primary">
+              <Appear><ListItem>NPM</ListItem></Appear>
+              <Appear><ListItem>Webpack(w/ babel)</ListItem></Appear>
+              <Appear><ListItem>NPM Task Runner</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={["fade"]} bgColor="secondary">
+            <Heading size={1} caps fit textColor="primary">
+              Toolchain - NPM
+            </Heading>
+            <Image src={images.Lego} width="75%"/>
+          </Slide>
+
           <Slide transition={["fade"]} bgColor="secondary">
             <Heading size={1} caps fit textColor="primary" >
               Toolchain - NPM
@@ -84,16 +117,9 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide transition={["fade"]} bgColor="secondary">
-            <Heading size={1} caps fit textColor="primary">
-              Toolchain - NPM
-            </Heading>
-            <Image src={images.Lego} width="75%"/>
-          </Slide>
-
           <Slide transition={["fade"]}>
             <Heading size={1} caps fit >
-              Toolchain - Webpack
+              Toolchain - Webpack - Babel
             </Heading>
             <Heading size={2} style={{fontSize: 34}} >
               Asp.net Bundler on steroids
@@ -127,21 +153,19 @@ export default class Presentation extends React.Component {
             lang="jsx"
             code={examples.WebpackModule}
             ranges={[
-                { loc: [0, 4], note: "Create the new component"},
-                { loc: [4, 12], note: "Use the new component"},
-                { loc: [13, 18], note: "Output"}
+                { loc: [0, 1]},
+                { loc: [1, 2], note: "Define named export"},
+                { loc: [3, 6], note: "Export component as default"},
+                { loc: [7, 8]},
+                { loc: [8, 10], note: "Import into scope"},
+                { loc: [10, 11], note: "Import into scope"},
+                { loc: [12, 17], note: "Add to parent UI"},
+                { loc: [18, 24], note: "Create the new component"},
+                { loc: [20, 21], note: "From parent"},
+                { loc: [21, 22], note: "From MyModule"},
+                { loc: [22, 23], note: "From ABC variable"}
             ]}
           />
-
-          <Slide transition={["fade"]} >
-            <Heading size={1} caps fit>
-              Toolchain - Webpack
-            </Heading>
-            <Heading size={2} style={{fontSize: 34}}>
-              Can split into chunks <br />and lazy loaded(code splitting)
-            </Heading>
-            <Image src={images.WebpackModules} width="100%" />
-          </Slide>
 
           <Slide transition={["fade"]} textColor="primary">
             <Heading size={1} caps fit >
@@ -167,10 +191,13 @@ export default class Presentation extends React.Component {
             <Heading size={1} caps fit textColor="primary">
               NPM Task Runner
             </Heading>
-            <Heading size={2} textColor="primary" style={{fontSize: 42}}>
-            Install: <Link textColor="primary" style={{textDecoration: "underline"}} href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner">NPM Task Runner</Link>
-            </Heading>
-            <Image src={images.NPMTaskRunner} width="100%" />
+            <List textColor="primary">
+              <Appear><ListItem>VS Extension <Link textColor="primary" style={{textDecoration: "underline", fontSize: 24}} href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner">Install: NPM Task Runner</Link></ListItem></Appear>
+              <Appear><ListItem>I generally use start, test, and build</ListItem></Appear>
+              <Appear><ListItem>Can run on VS Build</ListItem></Appear>
+              <Appear><ListItem>Eject!</ListItem></Appear>
+            </List>
+            <Image src={images.NPMTaskRunner} width="95%" />
           </Slide>
 
           <Slide transition={["fade"]} bgColor="tertiary" >
@@ -197,7 +224,7 @@ export default class Presentation extends React.Component {
             <List >
               <Appear><ListItem>Easy way to get a React app</ListItem></Appear>
               <Appear><ListItem>All tools already configured</ListItem></Appear>
-              <Appear><ListItem>Development and Prod Env.</ListItem></Appear>
+              <Appear><ListItem>Development and Prod</ListItem></Appear>
             </List>
           </Slide>
           <CodeSlide
@@ -258,14 +285,26 @@ export default class Presentation extends React.Component {
             lang="xml"
             code={examples.UrlRewrite}
             ranges={[
-                { loc: [2, 4], title: "5.URL Rewrite", note: "Match All Urls" },
-                { loc: [5, 6], title: "5.URL Rewrite", note: "And files exists in Build folder" },
-                { loc: [7, 8], title: "5.URL Rewrite", note: "Change url to Build path" },
-                { loc: [9, 11], title: "5.URL Rewrite", note: "Rewrite all react routes" },
-                { loc: [12, 15], title: "5.URL Rewrite", note: "Ignore conditions" },
-                { loc: [16, 17], title: "5.URL Rewrite", note: "Rewrite to React" },
-                { loc: [18, 20], title: "5.URL Rewrite", note: "Match root /" },
-                { loc: [20, 21], title: "5.URL Rewrite", note: "Rewrite to React" }
+                { loc: [0, 1], title: "5.URL Rewrite"},
+                { loc: [3, 5], title: "5.URL Rewrite", note: "Match All Urls" },
+                { loc: [6, 7], title: "5.URL Rewrite", note: "And files exists in Build folder (/images/b.jpg)" },
+                { loc: [8, 9], title: "5.URL Rewrite", note: "Change url to Build path (/build/images/b.jpg)" },
+                { loc: [10, 12], title: "5.URL Rewrite", note: "Rewrite all react routes" },
+                { loc: [13, 16], title: "5.URL Rewrite", note: "Ignore conditions" },
+                { loc: [17, 18], title: "5.URL Rewrite", note: "Rewrite to React anything not on disk or /api" },
+                { loc: [19, 21], title: "5.URL Rewrite", note: "Match root /" },
+                { loc: [21, 22], title: "5.URL Rewrite", note: "Rewrite to React (/build/index.html)" }
+
+            ]}
+          />
+          <CodeSlide
+            transition={[]}
+            lang="xml"
+            code={examples.CORS}
+            ranges={[
+                { loc: [0, 1], title: "6.Cross Origin" },
+                { loc: [1, 2], title: "6.Cross Origin", note: "Only do in debug mode" },
+                { loc: [2, 4], title: "6.Cross Origin", note: "Enable" }
 
             ]}
           />
@@ -275,10 +314,11 @@ export default class Presentation extends React.Component {
             lang="xml"
             code={examples.WPP}
             ranges={[
-                { loc: [2, 3], title: "6.Fix Publish Profile", note: "Name task" },
-                { loc: [4, 5], title: "6.Fix Publish Profile", note: "What files to include" },
-                { loc: [5, 8], title: "6.Fix Publish Profile", note: "Where to put files in dest" },
-                { loc: [11, 15], title: "6.Fix Publish Profile", note: "Change url to Build path" }
+                { loc: [0, 1], title: "7.Fix Publish Profile"},
+                { loc: [3, 4], title: "7.Fix Publish Profile", note: "Name task" },
+                { loc: [5, 6], title: "7.Fix Publish Profile", note: "What files to include" },
+                { loc: [6, 9], title: "7.Fix Publish Profile", note: "Where to put files in dest" },
+                { loc: [12, 16], title: "7.Fix Publish Profile", note: "Change url to Build path" }
             ]}
           />
 
@@ -287,10 +327,29 @@ export default class Presentation extends React.Component {
             lang="xml"
             code={examples.ImportToRequire}
             ranges={[
-                { loc: [0, 1], title: "7.Fix VS Errors", note: "Importing an image" },
-                { loc: [2, 3], title: "7.Fix VS Errors", note: "Change to Require" }
+                { loc: [0, 1], title: "8.Fix VS Errors", note: "Importing an image" },
+                { loc: [2, 3], title: "8.Fix VS Errors", note: "Change to Require" }
             ]}
           />
+          <Slide transition={["fade"]} >
+            <Heading size={1} caps >
+              Misc Notes
+            </Heading>
+            <List>
+              <Appear><ListItem>VS 2015 Update 3</ListItem></Appear>
+              <Appear><ListItem>Typescript for VS 2.1.4</ListItem></Appear>
+              <Appear><ListItem>NPM not run with build</ListItem></Appear>
+              <Appear><ListItem>
+                Add Node to external tools
+                <List >
+                  <ListItem>Tools>Options</ListItem>
+                  <ListItem>Project and Solutions</ListItem>
+                  <ListItem>External Web tools</ListItem>
+                  <ListItem>Add { '{path to node}'} to top</ListItem>
+                </List>
+              </ListItem></Appear>
+            </List>
+          </Slide>
 
          <Slide transition={["fade"]}>
             <Heading size={1} caps fit>
@@ -303,12 +362,12 @@ export default class Presentation extends React.Component {
 
            <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
             <Heading size={1} caps fit textColor="primary">
-              There is an easier way!
+              There is an easier way! .Net Core!
             </Heading>
             <List textColor="primary">
-              <Appear><ListItem>.Net Core WebApi</ListItem></Appear>
-              <Appear><ListItem>All tools already configured</ListItem></Appear>
-              <Appear><ListItem>Development and Prod Env.</ListItem></Appear>
+              <Appear><ListItem>Javascript Services</ListItem></Appear>
+              <Appear><ListItem>Cross-Platform</ListItem></Appear>
+              <Appear><ListItem>Fully backed?</ListItem></Appear>
             </List>
           </Slide>
 
@@ -317,21 +376,11 @@ export default class Presentation extends React.Component {
             lang="batch"
             code={examples.NetCore}
             ranges={[
-                { loc: [0, 1], title: "7.DotNet Core", note: "Install Yoman and generator" },
-                { loc: [2, 4], title: "7.DotNet Core", note: "Run Yoman" },
-                { loc: [16, 22], title: "7.DotNet Core", note: "Importing an image" },
-                { loc: [54, 58], title: "7.DotNet Core", note: "Importing an image" }
+                { loc: [0, 1], title: "1.DotNet Core", note: "Install Yoman and generator" },
+                { loc: [2, 4], title: "1.DotNet Core", note: "Run Yoman" },
+                { loc: [16, 22], title: "1.DotNet Core", note: "Importing an image" },
+                { loc: [54, 58], title: "1.DotNet Core", note: "Importing an image" }
 
-            ]}
-          />
-          <CodeSlide
-            transition={[]}
-            lang="jsx"
-            code={examples.Slides}
-            ranges={[
-                { loc: [0, 1], title: "React Slides"},
-                { loc: [6, 8], title: "React Slides"},
-                { loc: [8, 14], title: "React Slides"}
             ]}
           />
 
@@ -343,6 +392,38 @@ export default class Presentation extends React.Component {
               Demo
             </Heading>
           </Slide>
+
+          <Slide transition={["fade"]} >
+            <Heading size={1} caps >
+              Links
+            </Heading>
+            Me:
+            <List style={{textDecoration: "underline", fontSize: 24}}>
+              <ListItem><Link href="https://intellemerc.surge.sh">https://intellemerc.surge.sh</Link></ListItem>
+              <ListItem><Link href="https://github.com/Intellemerc/CreateWebApiApp">Sample Asp.net WebApi</Link></ListItem>
+              <ListItem><Link href="http://intellemerc.com/">Blog</Link></ListItem>
+              <ListItem><Link href="https://twitter.com/intellemerc">@Intellemerc</Link></ListItem>
+            </List>
+            Other:
+            <List style={{textDecoration: "underline", fontSize: 24}}>
+              <ListItem><Link href="https://github.com/aspnet/JavaScriptServices">JS Services(Core Project)</Link></ListItem>
+              <ListItem><Link href="https://facebook.github.io/react/">React Docs</Link></ListItem>
+              <ListItem><Link href="https://github.com/FormidableLabs/spectacle">spectacle js</Link></ListItem>
+              <ListItem><Link href="https://codepen.io/intellemerc/pen/bgNPBL">CodePen</Link></ListItem>
+            </List>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="jsx"
+            code={examples.Slides}
+            ranges={[
+                { loc: [0, 1], title: "React Slides"},
+                { loc: [3, 5], title: "React Slides"},
+                { loc: [6, 8], title: "React Slides"},
+                { loc: [8, 14], title: "React Slides"}
+            ]}
+          />
         </Deck>
       </Spectacle>
     );

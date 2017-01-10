@@ -1,3 +1,4 @@
+<!--Web.config-->
 <rewrite>
   <rules>
     <rule name="static dist files" stopProcessing="true">
@@ -8,7 +9,7 @@
       <action type="Rewrite" url="/build/{R:1}" />
     </rule>
     <rule name="React Routes" stopProcessing="true">
-      <match url=".*" />
+      <match url="^(.+)$" />
       <conditions logicalGrouping="MatchAll">
         <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
         <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
@@ -16,7 +17,7 @@
       </conditions>
       <action type="Rewrite" url="/build/index.html" />
     </rule>
-    <rule name="index.html as document root" stopProcessing="true">
+    <rule name="build/index.html as document root" stopProcessing="true">
       <match url="^$" />
       <action type="Rewrite" url="/build/index.html" />
     </rule>

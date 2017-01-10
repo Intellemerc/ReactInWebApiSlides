@@ -1,0 +1,5 @@
+//WebApiConfig.cs
+#if DEBUG
+            var cors = new EnableCorsAttribute("http://localhost:3000", "*", "*");
+            config.EnableCors(cors);
+#endif

@@ -1,6 +1,6 @@
 REM Install create-react-app to global
 npm install -g create-react-app
-@create-react-app {dir name}
+REM create-react-app {dir name}
 create-react-app TempDir
 
 ...
